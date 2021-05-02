@@ -16,13 +16,7 @@ from pathlib import Path
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
-STATICFILES_DIR = os.path.join(BASE_DIR, "static")
-STATIC_DIR = os.path.join(BASE_DIR, "staticfiles")
-MEDIA_DIR = os.path.join(BASE_DIR, "media")
-
 
 
 # Quick-start development settings - unsuitable for production
@@ -50,11 +44,13 @@ INSTALLED_APPS = [
     
     # my app
     'myapp',
-    'album'
+    'album',
+    'storages'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -68,7 +64,7 @@ ROOT_URLCONF = 'testproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,12 +127,23 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = STATIC_DIR  # production, don't forget to run collectstatic
-STATICFILES_DIRS = [STATICFILES_DIR, ]  # development environment
+STATIC_URL = '/static/'  
+STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = MEDIA_DIR
+MEDIA_ROOT = BASE_DIR / 'media/'
+
+AWS_ACCESS_KEY_ID = 'AKIARVGPJVYVATR5L7HQ'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'bucketeer-877dd773-51d8-45f1-bff8-64ae71ebc53d'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
 # Default primary key field type
