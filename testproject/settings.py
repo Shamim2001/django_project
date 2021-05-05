@@ -45,7 +45,9 @@ INSTALLED_APPS = [
     # my app
     'myapp',
     'album',
+    'blog',
     'storages'
+    
 ]
 
 MIDDLEWARE = [
