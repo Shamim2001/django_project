@@ -13,3 +13,15 @@ def homepage(reguest):
     }
     
     return render(reguest, 'index.html', context)
+
+#blueberry.html index link
+
+def blueberry(reguest):
+    
+    
+
+    context = {
+        
+    }
+    
+    return render(reguest, 'blueberry.html', context)
