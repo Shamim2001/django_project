@@ -106,6 +106,23 @@
 
     <!-- ========== MAIN ========== -->
     <main id="content" role="main">
+
+      <a href="{% url 'blog:blog_list' %}">
+        <h3>All</h3>
+      </a>
+
+     {% for category in categories %}
+
+      
+      <a href="{{ category.get_absolute_url }}">
+        <h3>{{ category.name }}</h3>
+      </a>
+      
+
+     {% endfor %}
+
+
+
       <!-- User Profile Section -->
       <div class="container space-top-1 space-bottom-2">
          <!-- End Blog Card  -->
@@ -169,7 +186,7 @@
                 Read more at
                 <a class="font-weight-bold" href="#">hannawolfe.com</a>
               </p>
-              -->
+               -->
 
               <!-- Search Section -->
               <div class="bg-navy">
@@ -198,7 +215,6 @@
               
             </div>
           </div>
-        -->
         </div>
       </div>
       <!-- End User Profile Section -->
@@ -217,7 +233,9 @@
     
             <div class="card-body">
               
-    
+              <h6>{{ post.category.name }}</h6>
+
+
               <h2 class="h3">
                 <a class="text-inherit" href=""
                   >{{ post.title}} </a
