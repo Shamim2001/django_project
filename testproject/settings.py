@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'cloudinary_storage',
+    'cloudinary',
+
     
     # my app
     'myapp',
@@ -145,15 +148,23 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media/'
 
 
-#aws storage key add
-AWS_ACCESS_KEY_ID = 'AKIARVGPJVYVLNFAAMTG'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'nasim.secpstorage'
-AWS_S3_FILE_OVERWRITE = False
-AWS_QUERYSTRING_AUTH = False
-AWS_DEFAULT_ACL = None
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# #aws storage key add
+# AWS_ACCESS_KEY_ID = 'AKIARVGPJVYVLNFAAMTG'
+# AWS_SECRET_ACCESS_KEY = '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'
+# AWS_STORAGE_BUCKET_NAME = 'nasim.secpstorage'
+# AWS_S3_FILE_OVERWRITE = False
+# AWS_QUERYSTRING_AUTH = False
+# AWS_DEFAULT_ACL = None
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
+# clodinary storage key 
+
+CLOUDINARY_STORAGE ={
+    'CLOUD_NAME' : 'shamim2020',
+    'API_KEY' : '224895593143573',
+    'API_SECRET' : 'E0FBRftJvLTBIOLYWHE0hD_c6e4'
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
