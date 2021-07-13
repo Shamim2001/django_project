@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-lk$1mzhv$5-5^wih^jr$0-xw(=^@30(1=hg9!&yx%91ew5#2s5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'album',
     'blog',
     'storages',
-    'taggit'
+    'taggit',
+    'carousel'
     
 ]
 
